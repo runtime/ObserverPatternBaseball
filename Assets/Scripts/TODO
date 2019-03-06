@@ -1,0 +1,31 @@
+
+Start game
+pitch ball
+
+ball 
+balls ++
+if balls >3  { TB = 1 }
+dead ball
+update score
+
+
+strike
+Send Event to Controller
+
+strike ++
+if strikes > 2 { out }
+Controller update score
+if outs > 2 {game over}
+Update ball.state to dead
+
+
+batted ball
+if strike or foul { strike }
+if 1b {TB 1}
+if 2b {TB 2}
+if 3b {TB 3}
+if HR {TB 4}
+Send Event to Controller
+Controller update score
+Update ball.state to dead
+
