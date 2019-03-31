@@ -58,6 +58,8 @@ namespace VRStickball {
         public GameBallController ball;
         // scoreboard
         public ScoreboardController scoreBoardController;
+        // Sound
+        public GameSoundController gameSoundController;
    
 
        
@@ -170,6 +172,10 @@ namespace VRStickball {
            // for now update the scoreboard to show state even if game isn't running
             scoreBoardController.SetGameState("GameState: " + _state.ToString());
             scoreBoardController.SetBallState("BallState: " + ball.State.ToString());
+
+            // Sound
+            // get the sound controller
+		     gameSoundController = GameObject.Find("GameSoundOject").GetComponent<GameSoundController>();
 
 
            //StartGame();
