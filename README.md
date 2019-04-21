@@ -11,20 +11,39 @@ GameController/Ball/Player Observer pattern
 https://www.raywenderlich.com/2799-intermediate-unity-3d-for-ios-part-2-3
 
 
+Observer Pattern
+_gameController is a singleton in the gameBall.
+When the gameball interacts with objects it sends an event to the Game Controller.
+
+_gameController then communicates through public functions to different parts of the game depending on its state.
+
+Scoreboard Controller
+Updates the Scoreboard on the wall and baserunner indicators
+
+SoundController
+Controls the ambient sounds and notificaiton sounds. Ball sound will be in the gameball
+
+Notification Controller
+Puts notifications in the view of the user such as "Out" "single" & "Homerun"
+
+Player Controller
+Controls the pitcher including animation states
+
+
  Scoring
  Game Controller
  variables
- //total bases vars
-// used to track the total bases of the current ball (batter)
+ total bases vars
+used to track the total bases of the current ball (batter)
   _newTotalBases = 0;
 
-// baserunner indicator vars for scoreboard
+baserunner indicator vars for scoreboard
   _runnerOnFirst = false;
 
-// used to track the total runs for this at bat
+used to track the total runs for this at bat
   _newRuns = 0;
 
-// used to track the total runs for the player (user)
+used to track the total runs for the player (user)
  _totalRuns  
 
   functions
