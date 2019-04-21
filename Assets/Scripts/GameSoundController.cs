@@ -17,7 +17,7 @@ namespace VRStickball {
 		
 		// Use this for initialization
 		void Start () {
-			print ("[GameSoundController] Start]");
+			//print ("[GameSoundController] Start]");
 			source.Play ();
 			
 		}

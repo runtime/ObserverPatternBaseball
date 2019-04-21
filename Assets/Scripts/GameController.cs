@@ -60,6 +60,8 @@ namespace VRStickball {
         public ScoreboardController scoreBoardController;
         // Sound
         public GameSoundController gameSoundController;
+        // In Game Notifications
+        public GameNotificationController gameNotificationController;
    
 
        
@@ -177,6 +179,9 @@ namespace VRStickball {
             // get the sound controller
 		     gameSoundController = GameObject.Find("GameSoundOject").GetComponent<GameSoundController>();
 
+            // Nofications
+		     gameNotificationController = GameObject.Find("GameSoundOject").GetComponent<GameNotificationController>();
+
 
            //StartGame();
 
@@ -273,6 +278,7 @@ namespace VRStickball {
              _outs++;
              _strikes = 0;
              _balls = 0;
+            notifyUser("out");
             UpdateScore();
         }
 
@@ -298,7 +304,7 @@ namespace VRStickball {
 
             } else if (_strikes == 3  && _outs < 3) {
                 _outs++;
-                
+                notifyUser("out");
                // CurrentBatter = 0;
                // _batters.Add(CurrentBatter);
 
@@ -546,6 +552,14 @@ namespace VRStickball {
 
         }
 
+        private void notifyUser(string notification) {
+
+            if (notification == "out") {
+                gameNotificationController.displayOut();
+            }
+
+        }
+
 
 
         private void SetDeadBall() {
@@ -573,10 +587,13 @@ namespace VRStickball {
 
         IEnumerator PitchBall() {
             Debug.Log("[GameController] PitchBall()");
+            
             yield return new WaitForSeconds (2.0f);
 
 
             while (_outs < 3 && _totalRuns < 2) {
+                // clear notifications
+                gameNotificationController.clearNotifications();
                 Debug.Log("[GameController] PitchBall() -->");
                 // Control Pitcher Animation
              // var ball = Instantiate (gameBall, transform.position, transform.rotation);
